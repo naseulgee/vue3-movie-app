@@ -6,7 +6,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from './Home'
 import About from './About'
-import Sample from './Sample'
 
 export default createRouter({
     /** history 값 종류
@@ -17,11 +16,8 @@ export default createRouter({
     // 페이지를 배열로 관리한다
     routes: [
         {
-            path: '/sample',  // 페이지 경로
-            component: Sample // 보여줄 컴포넌트
-        },
-        {
             path: '/',
+            alias: "/home",
             component: Home
         },
         {
