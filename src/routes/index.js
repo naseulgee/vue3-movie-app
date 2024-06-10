@@ -5,6 +5,8 @@
 */
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from './Home'
+import Search from './Search'
+import Movie from './Movie'
 import About from './About'
 
 export default createRouter({
@@ -19,6 +21,14 @@ export default createRouter({
             path: '/',
             alias: "/home",
             component: Home
+        },
+        {
+            path: '/search',
+            component: Search
+        },
+        {
+            path: '/movie',
+            component: Movie
         },
         {
             path: '/about',
