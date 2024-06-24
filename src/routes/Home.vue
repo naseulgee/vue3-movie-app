@@ -1,17 +1,17 @@
 <template>
     <Headline />
 
-    <BestMovie />
+    <BestMovieCard />
 </template>
 
 <script>
 import Headline from '~/components/Headline'
-import BestMovie from '~/components/BestMovie'
+import BestMovieCard from '~/components/BestMovieCard'
 
 export default {
     components: {
         Headline,
-        BestMovie,
+        BestMovieCard,
     },
     data() {
         return {
