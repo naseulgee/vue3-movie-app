@@ -9,8 +9,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 // fontawesome 컴포넌트
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // fontawesome 사용할 아이콘 명시
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-library.add(faChevronDown);
+import { faChevronDown, faHouse, faMagnifyingGlass, faFilm, faUser } from "@fortawesome/free-solid-svg-icons";
+library.add(faChevronDown, faHouse, faMagnifyingGlass, faFilm, faUser);
 
 createApp(App)//Root 컴포넌트 연결
 .component("font-awesome-icon", FontAwesomeIcon)

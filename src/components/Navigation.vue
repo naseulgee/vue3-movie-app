@@ -5,11 +5,11 @@
         active-class: 클릭시 활성화되는 클래스를 지정한다.
             기본값: router-link-active
     -->
-    <div class="nav-wrap w-100 position-fixed top-0 start-0 bg-dark">
+    <div class="nav-wrap w-100 container-fluid position-fixed start-0">
         <nav class="container d-flex justify-content-between align-items-center">
             <Logo
                 color-class="text-light"
-                size-class="fs-2" />
+                size-class="d-none d-md-block fs-2" />
             <ul class="nav nav-pills">
                 <li
                     class="nav-item"
@@ -19,7 +19,10 @@
                         class="nav-link"
                         active-class="active"
                         :to="navigation.href">
-                        {{ navigation.name }}
+                        <span class="d-sm-block d-md-none">
+                            <font-awesome-icon :icon="['fa-solid', navigation.icon]" />
+                        </span>
+                        <span class="d-none d-md-block">{{ navigation.name }}</span>
                     </RouterLink>
                 </li>
             </ul>
@@ -38,19 +41,23 @@ export default {
             navigations: [
                 {
                     name: "Home",
-                    href: "/"
+                    href: "/",
+                    icon: "house" // MO
                 },
                 {
                     name: "Search",
-                    href: "/search"
+                    href: "/search",
+                    icon: "fa-magnifying-glass"
                 },
                 {
                     name: "Movie",
-                    href: "/movie"
+                    href: "/movie",
+                    icon: "film"
                 },
                 {
                     name: "About",
-                    href: "/about"
+                    href: "/about",
+                    icon: "user"
                 },
             ]
         }
@@ -60,9 +67,47 @@ export default {
 
 <style>
 .nav-wrap {
+    position: fixed;
+    left: 0;
     z-index: 9;
     nav {
         height: 75px;
+    }
+}
+/* [PC] =================== */
+@media (min-width: 768px) {
+    .nav-wrap {
+        top: 0;
+        background-color: var(--bs-dark);
+        + section {
+            margin-top: 75px;
+        }
+    }
+}
+/* [MO] =================== */
+@media (max-width: 767px) {
+    .nav-wrap {
+        bottom: 0;
+        background-color: var(--bs-light);
+        box-shadow: var(--bs-box-shadow-lg);
+        nav{
+            height: 50px;
+            font-size: 1.2em;
+            .nav{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                width: 100%;
+                .nav-link{
+                    transform-origin: center bottom;
+                    transition: 0.5s;
+                    &.active{
+                        font-size: 1.5em;
+                        transform: translate(0, -10%);
+                    }
+                }
+            }
+        }
     }
 }
 </style>
