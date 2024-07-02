@@ -7,6 +7,7 @@
 npm i -D shortid
 npm i bootstrap@v5.3.3
 npm i --save @fortawesome/fontawesome-svg-core @fortawesome/vue-fontawesome@latest-3 @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
+npm i axios
 ```
 1. 간단한 고유 id 생성 패키지 설치
     - shortid
@@ -21,6 +22,15 @@ npm i --save @fortawesome/fontawesome-svg-core @fortawesome/vue-fontawesome@late
     - @fortawesome/free-regular-svg-icons
     - @fortawesome/free-brands-svg-icons
         : 무료 아이콘 형태 패키지 설치
+4. axios 패키지 설치
+    - axios
+        : 네트워크 통신을 위한 패키지
+</details>
+
+
+# vue-loader 기반 vue로 전환
+<details>
+<summary>접기/펼치기</summary>
 
 ## 파일 및 폴더 CUD
 1. src/scss/main.scss
@@ -210,39 +220,7 @@ git push origin master
 - TODO Highlight
 - Vue-Official
 
-## 코드 자동완성 파일 생성
-- ./vscode/**파일명.code-snippets** 생성 및 내용 입력
-
-## Settings.json
-```
-"workbench.colorTheme": "Dracula",
-"editor.renderWhitespace": "all",
-"editor.tabSize": 4,
-"todohighlight.keywords": [
-    {
-        "text": "NOTE:",
-        "color": "#ffffff",
-        "backgroundColor": "deepskyblue",
-        "overviewRulerColor": "grey"
-    },
-    {
-        "text": "Vue:",
-        "color": "#ffffff",
-        "backgroundColor": "#42b883",
-        "overviewRulerColor": "grey"
-    },
-    {
-        "text": "★",
-        "color": "red",
-        "backgroundColor": "yellow",
-        "overviewRulerColor": "grey"
-    },
-],
-"[vue]": {
-    "editor.defaultFormatter": "Vue.volar"
-},
-"editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-}
-```
+## 설정 파일 생성 및 내용 입력
+- ./vscode/**파일명.code-snippets** : 코드 자동완성 단축키 설정 파일
+- ./vscode/**settings.json** : 작업 환경 설정 파일
 </details>
