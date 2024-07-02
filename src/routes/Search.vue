@@ -1,13 +1,16 @@
 <template>
-    <h1>About</h1>
+    <SearchForm />
 </template>
 
 <script>
+import SearchForm from '~/components/SearchForm'
 export default {
     components: {
+        SearchForm
     },
     data() {
         return {
+            title: "",
         }
     },
     computed: {

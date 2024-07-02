@@ -5,7 +5,7 @@
         active-class: 클릭시 활성화되는 클래스를 지정한다.
             기본값: router-link-active
     -->
-    <div class="nav-wrap w-100 container-fluid position-fixed start-0">
+    <div class="nav-wrap w-100 container-fluid position-fixed start-0 z-3">
         <nav class="container d-flex justify-content-between align-items-center">
             <Logo
                 color-class="text-light"
@@ -67,9 +67,6 @@ export default {
 
 <style>
 .nav-wrap {
-    position: fixed;
-    left: 0;
-    z-index: 9;
     nav {
         height: 75px;
     }
