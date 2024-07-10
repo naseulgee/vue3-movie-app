@@ -6,7 +6,7 @@
                 class="form-control"
                 type="text"
                 v-model="title" 
-                placeholder="영화 제목을 입력하세요."
+                placeholder="Movie title"
                 @keyup.enter="search" />
             <select
                 v-for="filter in filters"

@@ -13,7 +13,7 @@ export default {
     state     : () => {
         return {
             movies : [],
-            message: '',
+            message: 'Search for the movie title!',
             loading: false,
         }
     },
@@ -43,6 +43,14 @@ export default {
     actions   : {
         async searchMovies(context, payload) {
             try {
+                // 로딩 상태일 경우 반복 요청 방지
+                if(context.state.loading) return
+
+                context.commit('updateState', {
+                    message: 'Loading...',
+                    loading: true,
+                })
+
                 const res = await _fetchMovie({
                     ...payload,
                     page: 1
@@ -50,7 +58,6 @@ export default {
                 const { Search }       = res.data
                 let   { totalResults } = res.data
                 if(typeof totalResults != 'number') totalResults = parseInt(totalResults, 10)
-
 
                 context.commit('updateState', {
                     // 갱신할 데이터 : 전달할 데이터
