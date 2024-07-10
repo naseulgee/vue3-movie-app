@@ -13,11 +13,11 @@
                 :key="filter.name"
                 v-model="$data[filter.name]"
                 class="form-select"
-                :aria-label="filter.label">
+                :aria-label="filter.name">
                 <option
                     v-if="filter.name === 'year'"
                     value="">
-                    전체
+                    All
                 </option>
                 <option
                     v-for="item in filter.items"
@@ -29,37 +29,31 @@
                 class="btn btn-primary"
                 type="submit"
                 @click="search">
-                검색
+                Search
             </button>
         </form>
     </section>
 </template>
 
 <script>
-import axios from 'axios'
 export default {
-    components: {
-    },
     data() {
         return {
             title: "",
             type: "movie",
-            perPages: 10,
+            maxCnt: 10,
             year: "",
             filters: [
                 {
                     name: "type",
-                    label: "종류",
                     items: ["movie", "series", "episode"],
                 },
                 {
-                    name: "perPages",
-                    label: "페이지당 표시 수",
+                    name: "maxCnt",
                     items: [10, 20, 30],
                 },
                 {
                     name: "year",
-                    label: "연도",
                     items: (() => {
                         const years = [];
                         const currentYear = new Date().getFullYear(); // 올해 연도
@@ -72,16 +66,15 @@ export default {
             ]
         }
     },
-    computed: {
-    },
     methods: {
         async search() {
-            const OMDB_API_KEY = '8a44dd72';
-            const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${this.title}&type=${this.type}&y=${this.year}&page=1`)
-            console.log(res);
+            this.$store.dispatch('movie/searchMovies', {
+                title:  this.title,
+                type:   this.type,
+                year:   this.year,
+                maxCnt: this.maxCnt,
+            })
         }
-    },
-    watch: {
     },
 }
 </script>

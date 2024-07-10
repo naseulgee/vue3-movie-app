@@ -48,7 +48,9 @@
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "lodash": "^4.17.21",
     "vue": "^3.4.26",
-    "vue-router": "^4.3.2"
+    "vue-router": "^4.3.2",
+    "vuex": "^4.0.2"
   }
 }
