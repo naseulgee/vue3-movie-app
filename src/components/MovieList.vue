@@ -45,7 +45,7 @@ export default {
 .container{
     ul{
         gap: 10px;
-        min-height: calc(50vh - 75px);
+        min-height: calc(var(--vh-HF) - 76px);
         background-color: var(--bs-gray-200);
         li{
             $width: 200px;

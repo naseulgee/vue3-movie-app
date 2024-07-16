@@ -13,27 +13,11 @@ export default {
         Headline,
         BestMovieCard,
     },
-    data() {
-        return {
-        }
-    },
-    computed: {
-    },
-    methods: {
-    },
-    watch: {
-    },
 }
 </script>
 
 <style lang="scss" scoped>
 section {
-    height: calc(100vh - 75px);
-}
-/* [MO] =================== */
-@media (max-width: 767px) {
-    section {
-        height: calc(100vh - 50px);
-    }
+    height: var(--vh-H);
 }
 </style>

@@ -87,9 +87,24 @@ export default {
             flex: 5;
             min-width: 150px;
         }
-        .form-select{
+        .form-select,
+        .btn{
             flex: 1;
             min-width: 150px;
+        }
+    }
+}
+/* [MO] =================== */
+@media (max-width: 767px) {
+    .container{
+        form{
+            .form-control{
+                flex-basis: 100%;
+            }
+            .form-select,
+            .btn{
+                flex-basis: 50%
+            }
         }
     }
 }
