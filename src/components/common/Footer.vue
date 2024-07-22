@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Logo from "~/components/Logo"
+import Logo from "~/components/common/Logo"
 
 export default {
     components: {
@@ -16,3 +16,9 @@ export default {
     },
 }
 </script>
+
+<style lang="scss" scoped>
+footer .container{
+    height: 113px;
+}
+</style>

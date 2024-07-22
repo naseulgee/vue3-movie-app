@@ -4,10 +4,10 @@
  * 내보내지는 라우터 플러그인 -> main.js 에서 사용된다.
 */
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from './Home'
-import Search from './Search'
-import Movie from './Movie'
-import About from './About'
+import Home from '~/views/Home'
+import Search from '~/views/Search'
+import Movie from '~/views/Movie'
+import About from '~/views/About'
 
 export default createRouter({
     /** history 값 종류
@@ -32,7 +32,10 @@ export default createRouter({
         },
         {
             path: '/about',
-            component: About
+            component: About,
+            // meta: {
+            //     layout: SubLayout,
+            // }
         },
     ]
 })

@@ -7,7 +7,7 @@
         <!-- FIXME: css에서 이미지 url 변환이 제대로 되지 않아 임시로 template 에서 선언하여 사용 -->
         <img
             class="position-absolute top-0 start-0"
-            src="~assets/main-bg.jpg" />
+            src="~assets/images/main-bg.jpg" />
         <div class="container">
             <h1>
                 <Logo />
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo'
+import Logo from '~/components/common/Logo'
 
 export default {
     components: {
@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 .intro {
-    background: url('assets/main-bg.jpg') no-repeat center;
+    background: url('~assets/images/main-bg.jpg') no-repeat center;
     background-size: cover;
     z-index: 1;
     //FIXME: css에서 이미지 url 변환이 제대로 되지 않아 임시로 img 태그로 선언하여 사용
