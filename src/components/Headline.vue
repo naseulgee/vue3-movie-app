@@ -3,11 +3,8 @@
     [참고] https://www.capitoltheatre.com.au/
     [참고] https://colorlib.com/wp/wp-content/uploads/sites/2/theater-websites.jpg
     -->
-    <section class="intro container-fluid d-flex flex-column justify-content-center align-items-center text-center text-white position-relative">
-        <!-- FIXME: css에서 이미지 url 변환이 제대로 되지 않아 임시로 template 에서 선언하여 사용 -->
-        <img
-            class="position-absolute top-0 start-0"
-            src="~assets/images/main-bg.jpg" />
+    <section
+        class="intro container-fluid d-flex flex-column justify-content-center align-items-center text-center text-white position-relative z-1">
         <div class="container">
             <h1>
                 <Logo />
@@ -35,17 +32,7 @@ export default {
 
 <style lang="scss" scoped>
 .intro {
-    background: url('~assets/images/main-bg.jpg') no-repeat center;
-    background-size: cover;
-    z-index: 1;
-    //FIXME: css에서 이미지 url 변환이 제대로 되지 않아 임시로 img 태그로 선언하여 사용
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        z-index: -2;
-    }
+    background: url(~assets/images/main-bg.jpg) no-repeat center/cover;
     &::before {
         display: block;
         content: "";

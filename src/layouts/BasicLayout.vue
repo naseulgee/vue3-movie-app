@@ -23,7 +23,7 @@ export default {
 
 <!-- NOTE: 전역으로 적용되어야 하기 때문에 scoped를 명시하지 않는다. -->
 <style lang="scss">
-@import "~/scss/main";
+@import "~assets/scss/main";
 
 body {
     --headerH: 75px;

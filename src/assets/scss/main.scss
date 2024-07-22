@@ -17,13 +17,13 @@ $font-family-sans-serif: "DOSIyagiMedium", "Pixelify Sans", sans-serif;
 $spacer: 50px;
 
 // 필수 모듈 호출
-@import "../../node_modules/bootstrap/scss/functions";
-@import "../../node_modules/bootstrap/scss/variables"; // 해당 파일에 작성된 변수를 재정의할 수 있다.
-@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables"; // 해당 파일에 작성된 변수를 재정의할 수 있다.
+@import "../../../node_modules/bootstrap/scss/mixins";
 
 
 // 그 외 모듈 호출
 
 // NOTE: 부트스트랩 기본 스타일 불러오기
 // [참고] https://getbootstrap.com/docs/5.0/getting-started/introduction/
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
