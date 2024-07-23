@@ -16,7 +16,7 @@
                     v-for="navigation in navigations"
                     :key="navigation.name">
                     <RouterLink
-                        class="nav-link"
+                        :class="['nav-link', { active: isMatch(navigation.path) }]"
                         active-class="active"
                         :to="navigation.href">
                         <span class="d-sm-block d-md-none">
@@ -51,8 +51,9 @@ export default {
                 },
                 {
                     name: "Movie",
-                    href: "/movie",
-                    icon: "film"
+                    href: "/movie/tt4520988", // 기본 경로
+                    icon: "film",
+                    path: /^\/movie/, // /movie 로 시작하는 경로를 모두 일치시킴
                 },
                 {
                     name: "About",
@@ -60,6 +61,12 @@ export default {
                     icon: "user"
                 },
             ]
+        }
+    },
+    methods: {
+        isMatch(path) {
+            if(!path) return false
+            return path.test(this.$route.fullPath) // 정규표현식의 test 함수를 사용하여 포함여부 반환
         }
     }
 }

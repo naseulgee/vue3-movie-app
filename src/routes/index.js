@@ -27,7 +27,12 @@ export default createRouter({
             component: Search
         },
         {
-            path: '/movie',
+            /** NOTE: 동적 경로 매칭
+             * [참고] https://v3.router.vuejs.org/guide/essentials/dynamic-matching.html
+             * 동적 경로 사용 시 콜론(:) 뒤에 변수명을 적고, route의 params로 접근할 수 있다.
+             * ex) this.$route.params.변수명
+             */
+            path: '/movie/:id',
             component: Movie
         },
         {
