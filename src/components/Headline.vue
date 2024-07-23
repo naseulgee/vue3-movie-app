@@ -3,8 +3,7 @@
     [참고] https://www.capitoltheatre.com.au/
     [참고] https://colorlib.com/wp/wp-content/uploads/sites/2/theater-websites.jpg
     -->
-    <section
-        class="intro container-fluid d-flex flex-column justify-content-center align-items-center text-center text-white position-relative z-1">
+    <section class="intro container-fluid d-flex flex-column justify-content-center align-items-center text-center text-white position-relative z-1">
         <div class="container">
             <h1>
                 <Logo />
