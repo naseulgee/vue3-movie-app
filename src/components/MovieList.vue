@@ -1,11 +1,10 @@
 <template>
     <section class="container">
         <ul class="d-flex flex-wrap justify-content-center align-items-center w-100 my-1 p-1 rounded">
-            <li
+            <Loader
                 v-if="loading"
-                class="loading w-100 h-auto text-primary text-center">
-                <span class="spinner-border"></span>
-            </li>
+                position="absolute"
+                :size="5" />
             <li
                 v-if="message != ''"
                 class="message w-100 h-auto fs-2 text-center">
@@ -21,11 +20,13 @@
 </template>
 
 <script>
+import Loader from '~/components/common/Loader'
 import MovieItem from '~/components/MovieItem'
 
 export default {
     components: {
         MovieItem,
+        Loader,
     },
     computed: {
         movies() {
