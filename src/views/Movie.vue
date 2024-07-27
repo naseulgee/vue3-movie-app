@@ -22,7 +22,7 @@
             class="info-wrap d-flex flex-wrap justify-content-between">
             <div
                 class="poster rounded-3"
-                :style="{background: `url(${theMovie.Poster}) no-repeat center/cover`}"></div>
+                :style="{background: `url(${reqDiffSizeImage(theMovie.Poster)}) no-repeat center/cover`}"></div>
             <ul class="specs p-0">
                 <li class="title">
                     <h1>{{ theMovie.Title }}</h1>
@@ -90,6 +90,11 @@ export default {
         },
         theMovie(){
             return this.$store.state.movie.theMovie
+        }
+    },
+    methods: {
+        reqDiffSizeImage(url, size = 700){
+            return url.replace('SX300', 'SX'+size)
         }
     },
     created(){
