@@ -3,7 +3,11 @@
         <RouterLink
             :to="`/movie/${movie.imdbID}`"
             class="d-block w-100 h-100">
+            <Loader
+                v-if="imageLoading"
+                position="absolute" />
             <img
+                v-else
                 :src="movie.Poster"
                 :alt="movie.Title + ' Poster'"
                 class="w-100 h-100" />
@@ -20,12 +24,31 @@
 </template>
 
 <script>
+import Loader from '~/components/common/Loader'
+
 export default {
     props: {
         movie: {
             type: Object,
             defualt: () => {}, // 객체형은 함수로 반환해줘야 함
         }
+    },
+    components: {
+        Loader,
+    },
+    data() {
+        return {
+            imageLoading: true,
+        }
+    },
+    methods: {
+        async init(){
+            await this.$loadImage(this.movie.Poster)
+            this.imageLoading = false
+        }
+    },
+    mounted(){ // HTML 구조와 컴포넌트 연결 직후 바로 실행 (created는 DOM과 연결되지 않은 상태)
+        this.init()
     },
 }
 </script>

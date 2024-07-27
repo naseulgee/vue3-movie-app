@@ -21,8 +21,13 @@
             v-else
             class="info-wrap d-flex flex-wrap justify-content-between">
             <div
-                class="poster rounded-3"
-                :style="{background: `url(${reqDiffSizeImage(theMovie.Poster)}) no-repeat center/cover`}"></div>
+                class="poster rounded-3 position-relative"
+                :style="{background: `var(--bs-gray-200) url(${reqDiffSizeImage(theMovie.Poster)}) no-repeat center/cover`}">
+                <Loader
+                    v-if="imageLoading"
+                    position="absolute"
+                    :size="3" />
+            </div>
             <ul class="specs p-0">
                 <li class="title">
                     <h1>{{ theMovie.Title }}</h1>
@@ -82,6 +87,7 @@ export default {
     },
     data() {
         return {
+            imageLoading: true,
         }
     },
     computed: {
@@ -94,14 +100,22 @@ export default {
     },
     methods: {
         reqDiffSizeImage(url, size = 700){
-            return url.replace('SX300', 'SX'+size)
+            const src = url.replace('SX300', 'SX' + size)
+            /** NOTE: 이미지 로딩 여부와 관련 없이 src 값이 반환되어야 함으로,
+             * await 가 아닌 then 을 사용하여 별개의 로직으로 실행시켜야 한다.
+            */
+            this.$loadImage(src)
+                .then(() => {
+                    this.imageLoading = false
+                })
+            return src
         }
     },
     created(){
         this.$store.dispatch('movie/searchMovieWithId', {
             id : this.$route.params.id // routes/index.js 에서 설정한 콜론(:) 뒤 동적 파라미터 변수명
         })
-    }
+    },
 }
 </script>
 
