@@ -31,13 +31,14 @@ body {
     main {
         min-height: var(--vh-HF);
         padding-top: var(--headerH);
+        box-sizing: content-box;
     }
 }
 /* [MO] =================== */
 @media (max-width: 767px) {
     body {
-        --headerH: 60px;
-        --footerH: 163px;
+        --headerH: 50px;
+        --footerH: 113px;
         main {
             min-height: var(--vh-HF);
             padding-top: 0;
