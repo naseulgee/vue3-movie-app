@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import Loader from '~/components/common/Loader'
 
 export default {
@@ -92,14 +93,37 @@ export default {
         }
     },
     computed: {
-        loading() {
-            return this.$store.state.movie.loading
-        },
-        theMovie(){
-            return this.$store.state.movie.theMovie
-        }
+        /** NOTE: Vuex Helpers
+         * [참고 state    ] https://vuex.vuejs.org/guide/state.html#the-mapstate-helper
+         * [참고 getters  ] https://vuex.vuejs.org/guide/getters.html#the-mapgetters-helper
+         * [참고 mutations] https://vuex.vuejs.org/guide/mutations.html#committing-mutations-in-components
+         * [참고 actions  ] https://vuex.vuejs.org/guide/actions.html#dispatching-actions-in-components
+         * 
+         * store 에 등록된 데이터 및 함수들을 반복 사용 시 편하게 등록을 도와주는 함수
+         * 
+         * Helpers 종류
+         *★- mapState: computed 영역에서 사용되며, 자주 사용되는 편이다.
+         *  - mapGetters, mapMutations, mapActions: methods 영역에서 사용된다.
+         *      - 어디에서 참조되는 함수인지 헷갈리기 때문에 Helper들 보다 직접 호출이 선호된다.
+         * 
+         * Helpers 사용
+         *  - ...Helpers('store 별칭', [ 호출할 변수 또는 함수명1, ... ])
+         */
+        ...mapState('movie', [
+            'loading',
+            'theMovie',
+        ]),
+        // loading() {
+        //     return this.$store.state.movie.loading
+        // },
+        // theMovie(){
+        //     return this.$store.state.movie.theMovie
+        // }
     },
     methods: {
+        ...mapActions('movie', [
+            'searchMovieWithId',
+        ]),
         reqDiffSizeImage(url, size = 700){
             // 사이즈 변환
             let src = url.replace('SX300', 'SX' + size)
@@ -121,9 +145,14 @@ export default {
         }
     },
     created(){
-        this.$store.dispatch('movie/searchMovieWithId', {
+        // methods에 mapActions로 등록한 함수 호출
+        this.searchMovieWithId({
             id : this.$route.params.id // routes/index.js 에서 설정한 콜론(:) 뒤 동적 파라미터 변수명
         })
+        // store action 직접 호출
+        // this.$store.dispatch('movie/searchMovieWithId', {
+        //     id : this.$route.params.id
+        // })
     },
 }
 </script>

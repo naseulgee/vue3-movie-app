@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Loader from '~/components/common/Loader'
 
 export default {
@@ -54,21 +55,13 @@ export default {
         }
     },
     computed: {
-        name() {
-            return this.$store.state.about.name
-        },
-        email() {
-            return this.$store.state.about.email
-        },
-        phone() {
-            return this.$store.state.about.phone
-        },
-        blog() {
-            return this.$store.state.about.blog
-        },
-        image() {
-            return this.$store.state.about.image
-        },
+        ...mapState('about', [
+            'name',
+            'email',
+            'phone',
+            'blog',
+            'image',
+        ]),
     },
     methods: {
         async init() {
@@ -91,6 +84,7 @@ export default {
     .info-wrap{
         li{
             a{
+                color: $body-color;
                 text-decoration: none;
             }
         }
