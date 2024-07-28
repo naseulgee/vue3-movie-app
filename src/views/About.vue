@@ -1,6 +1,6 @@
 <template>
     <section class="container pt-1 text-center">
-        <div class="img-wrap m-auto mt-0 mb-2 rounded-5 overflow-hidden position-relative">
+        <div class="img-wrap m-auto mt-0 mb-2 rounded overflow-hidden position-relative">
             <Loader
                 v-if="imageLoading"
                 position="absolute"
@@ -10,15 +10,33 @@
                 alt="Profile avata"
                 class="w-100" />
         </div>
-        <ul class="p-0 text-break">
+        <ul class="info-wrap p-0 lh-lg text-break">
             <li>
                 <h1 class="text-primary">
                     {{ name }}
                 </h1>
             </li>
-            <li>{{ phone }}</li>
-            <li>{{ email }}</li>
-            <li>{{ blog }}</li>
+            <li>
+                <a
+                    :href="'tel:' + phone"
+                    target="_blank">
+                    {{ phone }}
+                </a>
+            </li>
+            <li>
+                <a
+                    :href="'mailto:' + email"
+                    target="_blank">
+                    {{ email }}
+                </a>
+            </li>
+            <li>
+                <a
+                    :href="blog"
+                    target="_blank">
+                    {{ blog }}
+                </a>
+            </li>
         </ul>
     </section>
 </template>
@@ -69,6 +87,13 @@ export default {
     .img-wrap{
         width: 100%;
         max-width: 300px;
+    }
+    .info-wrap{
+        li{
+            a{
+                text-decoration: none;
+            }
+        }
     }
 }
 </style>
