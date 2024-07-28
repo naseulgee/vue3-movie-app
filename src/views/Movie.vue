@@ -22,7 +22,7 @@
             class="info-wrap d-flex flex-wrap justify-content-between">
             <div
                 class="poster rounded-3 position-relative"
-                :style="{background: `var(--bs-gray-200) url(${reqDiffSizeImage(theMovie.Poster)}) no-repeat center/cover`}">
+                :style="{background: `var(--bs-gray-200) url(${!noImage ? reqDiffSizeImage(theMovie.Poster) : require('~/assets/images/common/404-img.jpg')}) no-repeat center/cover`}">
                 <Loader
                     v-if="imageLoading"
                     position="absolute"
@@ -88,6 +88,7 @@ export default {
     data() {
         return {
             imageLoading: true,
+            noImage: false,
         }
     },
     computed: {
@@ -100,15 +101,23 @@ export default {
     },
     methods: {
         reqDiffSizeImage(url, size = 700){
-            const src = url.replace('SX300', 'SX' + size)
+            // 사이즈 변환
+            let src = url.replace('SX300', 'SX' + size)
+
             /** NOTE: 이미지 로딩 여부와 관련 없이 src 값이 반환되어야 함으로,
              * await 가 아닌 then 을 사용하여 별개의 로직으로 실행시켜야 한다.
             */
             this.$loadImage(src)
-                .then(() => {
-                    this.imageLoading = false
+                .then(() => { // 메모리상 이미지가 로딩이 완료될 때 까지 대기 후
                 })
-            return src
+                .catch(error => { // 이미지가 없는 경우 예외처리
+                    console.error(error)
+                    this.noImage = true
+                })
+                .finally(() => {
+                    this.imageLoading = false // 로딩 종료
+                })
+            return src // 대기와 상관 없이 사이즈 변환 주소 리턴
         }
     },
     created(){
@@ -127,7 +136,7 @@ export default {
             --posterW: 550px;
             flex-shrink: 0;
             width: var(--posterW);
-            height: calc(var(--posterW) * 5 / 4);
+            height: calc(var(--posterW) * 3 / 2);
         }
         .specs{
             flex-grow: 1;

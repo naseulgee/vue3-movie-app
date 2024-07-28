@@ -7,6 +7,11 @@
                 v-if="imageLoading"
                 position="absolute" />
             <img
+                v-else-if="noImage"
+                src="~/assets/images/common/404-img.jpg"
+                alt="No Poster"
+                class="w-100 h-100" />
+            <img
                 v-else
                 :src="movie.Poster"
                 :alt="movie.Title + ' Poster'"
@@ -39,12 +44,22 @@ export default {
     data() {
         return {
             imageLoading: true,
+            noImage: false,
         }
     },
     methods: {
         async init(){
-            await this.$loadImage(this.movie.Poster)
-            this.imageLoading = false
+            const src = this.movie.Poster
+
+            try {
+                // 메모리상 이미지가 로딩이 완료될 때 까지 대기
+                await this.$loadImage(src)
+            } catch (error) { // 이미지가 없는 경우 예외처리
+                console.error(error)
+                this.noImage = true
+            } finally {
+                this.imageLoading = false // 로딩 종료
+            }
         }
     },
     mounted(){ // HTML 구조와 컴포넌트 연결 직후 바로 실행 (created는 DOM과 연결되지 않은 상태)
@@ -58,6 +73,7 @@ li{
     &:hover{
         border: 5px solid var(--bs-primary);
         img{
+            // transform-origin: center;
             transform: scale(1.2);
         }
     }
