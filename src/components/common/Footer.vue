@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <div class="container py-1 text-center">
+        <div class="container py-1 opacity-50 text-center">
             <Logo size-class="fs-2" />
             <p>(c) {{ new Date().getFullYear() }} SeulGee All rights reserved.</p>
         </div>
