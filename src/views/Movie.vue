@@ -21,7 +21,7 @@
             v-else
             class="info-wrap d-flex flex-wrap justify-content-between">
             <div
-                class="poster rounded-3 position-relative"
+                class="poster mx-auto rounded-3 position-relative"
                 :style="{background: `var(--bs-gray-200) url(${!noImage ? reqDiffSizeImage(theMovie.Poster) : require('~/assets/images/common/404-img.jpg')}) no-repeat center/cover`}">
                 <Loader
                     v-if="imageLoading"
