@@ -4,6 +4,7 @@
  * 내보내지는 라우터 플러그인 -> main.js 에서 사용된다.
 */
 import { createRouter, createWebHashHistory } from 'vue-router'
+import NotFound from '~/views/NotFound'
 import Home from '~/views/Home'
 import Search from '~/views/Search'
 import Movie from '~/views/Movie'
@@ -17,6 +18,15 @@ export default createRouter({
     history: createWebHashHistory(),
     // 페이지를 배열로 관리한다
     routes: [
+        {
+            /** NOTE: 예외처리
+             * [참고] https://router.vuejs.kr/guide/essentials/dynamic-matching.html#Catch-all-404-Not-found-Route
+             * 별도로 지정하지 않은 모든 경로 예외 처리
+             * 사용 시 콜론(:) 뒤에 변수명을 적고, 정규표현식(.*)을 사용하여 전체 경로를 일치시킨다
+             */
+            path: '/:notFound(.*)',
+            component: NotFound,
+        },
         {
             path: '/',
             alias: "/home",

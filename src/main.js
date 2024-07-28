@@ -11,8 +11,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 // fontawesome 컴포넌트
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // fontawesome 사용할 아이콘 명시
-import { faChevronDown, faHouse, faMagnifyingGlass, faFilm, faUser } from "@fortawesome/free-solid-svg-icons";
-library.add(faChevronDown, faHouse, faMagnifyingGlass, faFilm, faUser);
+import { fas } from "@fortawesome/free-solid-svg-icons" // 전체 아이콘 등록
+import { far } from "@fortawesome/free-regular-svg-icons"
+library.add(fas, far);
 
 createApp(App) //Root 컴포넌트 연결
 .component("font-awesome-icon", FontAwesomeIcon)
