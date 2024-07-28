@@ -95,7 +95,7 @@ export default {
     }
 }
 /* [MO] =================== */
-@media (max-width: 767px) {
+@include media-breakpoint-down(md){
     .container{
         form{
             .form-control{

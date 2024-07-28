@@ -133,10 +133,10 @@ export default {
     .info-wrap{
         gap: 50px;
         .poster{
-            --posterW: 550px;
+            $posterW: 550px;
             flex-shrink: 0;
-            width: var(--posterW);
-            height: calc(var(--posterW) * 3 / 2);
+            width: $posterW;
+            height: calc($posterW * 3 / 2);
         }
         .specs{
             flex-grow: 1;
@@ -158,7 +158,7 @@ export default {
         .skeleton{
             display: block;
             border-radius: 10px;
-            background-color: var(--bs-gray-200);
+            background-color: $gray-200;
             &.title{
                 width: 80%;
                 height: 70px;
@@ -179,13 +179,13 @@ export default {
     }
 }
 /* [MO] =================== */
-@media (max-width: 767px) {
+@include media-breakpoint-down(md){
     .container{
         .info-wrap{
             gap: 30px;
             .poster{
                 width: 100%;
-                height: var(--vh-HF);
+                height: $vh-HF;
             }
             .specs{
                 width: 100%;

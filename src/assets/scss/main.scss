@@ -27,3 +27,15 @@ $spacer: 50px;
 // NOTE: 부트스트랩 기본 스타일 불러오기
 // [참고] https://getbootstrap.com/docs/5.0/getting-started/introduction/
 @import "../../../node_modules/bootstrap/scss/bootstrap";
+
+
+// 커스텀 변수 선언
+$headerH: 75px;
+$footerH: 113px;
+$vh-H   : calc(100vh - $headerH);
+$vh-HF  : calc(100vh - $headerH - $footerH);
+/* [MO] =================== */
+@include media-breakpoint-down(md){
+    $headerH: 50px;
+    $footerH: 113px;
+}

@@ -72,28 +72,28 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .nav-wrap {
     nav {
         height: 75px;
     }
 }
 /* [PC] =================== */
-@media (min-width: 768px) {
+@include media-breakpoint-up(md){
     .nav-wrap {
         top: 0;
-        background-color: var(--bs-dark);
+        background-color: $dark;
         + section {
             margin-top: 75px;
         }
     }
 }
 /* [MO] =================== */
-@media (max-width: 767px) {
+@include media-breakpoint-down(md){
     .nav-wrap {
         bottom: 0;
-        background-color: var(--bs-light);
-        box-shadow: var(--bs-box-shadow-lg);
+        background-color: $light;
+        box-shadow: $box-shadow-lg;
         nav{
             height: 50px;
             font-size: 1.2em;

@@ -18,6 +18,6 @@ export default {
 
 <style lang="scss" scoped>
 section {
-    height: var(--vh-H);
+    height: $vh-H;
 }
 </style>

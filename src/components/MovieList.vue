@@ -46,14 +46,14 @@ export default {
 .container{
     ul{
         gap: 10px;
-        min-height: calc(var(--vh-HF) - 75.5px);
-        background-color: var(--bs-gray-200);
+        min-height: calc($vh-HF - 75.5px);
+        background-color: $gray-200;
         li{
             $width: 200px;
             width: $width;
             height: calc($width * 3 / 2);
             &.message{
-                color: var(--bs-gray-500);
+                color: $gray-500;
             }
         }
     }

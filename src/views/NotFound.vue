@@ -41,13 +41,13 @@ export default {
 
 <style lang="scss" scoped>
 .container{
-    height: var(--vh-HF);
+    height: $vh-HF;
     .btn-wrap{
         gap: 1.25rem;
     }
 }
 /* [PC] =================== */
-@media (min-width: 768px) {
+@include media-breakpoint-up(md){
     .container{
         h1{
             font-size: 7rem;

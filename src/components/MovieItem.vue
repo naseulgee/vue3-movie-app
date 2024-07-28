@@ -71,7 +71,7 @@ export default {
 <style lang="scss" scoped>
 li{
     &:hover{
-        border: 5px solid var(--bs-primary);
+        border: 5px solid $primary;
         img{
             // transform-origin: center;
             transform: scale(1.2);
