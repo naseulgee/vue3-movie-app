@@ -31,6 +31,7 @@ export default {
 
 <style lang="scss" scoped>
 .intro {
+    height: $vh-H;
     background: url(~assets/images/main/main-bg.jpg) no-repeat center/cover;
     &::before {
         display: block;
