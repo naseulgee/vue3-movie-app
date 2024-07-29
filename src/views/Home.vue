@@ -13,6 +13,9 @@ export default {
         Headline,
         BestMovieCard,
     },
+    created() {
+        this.$store.commit('movie/resetMovies') // 검색 내용 초기화
+    },
 }
 </script>
 

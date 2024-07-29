@@ -4,6 +4,9 @@
         to: 라우터 설정(/src/routes/index.js)에 선언된 페이지 중 path 와 일치하는 페이지로 이동시킨다
         active-class: 클릭시 활성화되는 클래스를 지정한다.
             기본값: router-link-active
+
+        $route : 페이지 정보 속성을 가지는 객체(fullPath, params, ...)
+        $router: 페이지 조작을 위한 메소드를 가지는 객체(push, back, ...)
     -->
     <header class="nav-wrap w-100 container-fluid position-fixed start-0 z-3">
         <nav class="container d-flex justify-content-between align-items-center">
