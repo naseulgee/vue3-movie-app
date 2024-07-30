@@ -5,13 +5,15 @@
     -->
     <section class="intro container-fluid d-flex flex-column justify-content-center align-items-center overflow-hidden text-center text-white position-relative z-1">
         <div class="container">
-            <h1>
+            <h1 class="fw-bold">
                 <Logo />
                 <br />
-                The Open Movie Database
+                <span class="text-outline">The Open Movie Database</span>
             </h1>
             <hr class="mx-auto" />
-            <p>The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are contributed and maintained by our users.</p>
+            <p class="hand-writing">
+                The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are contributed and maintained by our users.
+            </p>
             <font-awesome-icon
                 icon="fa-solid fa-chevron-down"
                 v-for="i in 3"

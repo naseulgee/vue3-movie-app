@@ -7,7 +7,7 @@
                 :size="5" />
             <li
                 v-if="message != ''"
-                class="message w-100 h-auto fs-2 text-center">
+                class="message w-100 fs-2 text-center">
                 {{ message }}
             </li>
             <MovieItem
@@ -45,13 +45,8 @@ export default {
         gap: 10px;
         min-height: calc($vh-HF - 75.5px);
         background-color: $gray-200;
-        li{
-            $width: 200px;
-            width: $width;
-            height: calc($width * 3 / 2);
-            &.message{
-                color: $gray-500;
-            }
+        li.message{
+            color: $gray-500;
         }
     }
 }

@@ -8,11 +8,11 @@
         $route : 페이지 정보 속성을 가지는 객체(fullPath, params, ...)
         $router: 페이지 조작을 위한 메소드를 가지는 객체(push, back, ...)
     -->
-    <header class="nav-wrap w-100 container-fluid position-fixed start-0 z-3">
+    <header class="nav-wrap w-100 container-fluid position-fixed start-0">
         <nav class="container d-flex justify-content-between align-items-center">
             <Logo
                 color-class="text-light"
-                size-class="d-none d-md-block fs-2" />
+                size-class="d-none d-md-block fs-2 fw-bold" />
             <ul class="nav nav-pills">
                 <li
                     class="nav-item"
@@ -35,6 +35,7 @@
 
 <script>
 import Logo from '~/components/common/Logo'
+
 export default {
     components: {
         Logo
@@ -77,6 +78,7 @@ export default {
 
 <style lang="scss">
 .nav-wrap {
+    z-index: 99;
     nav {
         height: 75px;
     }

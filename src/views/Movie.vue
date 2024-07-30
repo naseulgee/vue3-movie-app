@@ -29,15 +29,17 @@
                     :size="3" />
             </div>
             <ul class="specs p-0">
-                <li class="title">
-                    <h1>{{ theMovie.Title }}</h1>
+                <li class="title my-1">
+                    <h1 class="m-0 fw-bold">
+                        {{ theMovie.Title }}
+                    </h1>
                 </li>
-                <li class="labels text-black-50">
+                <li class="labels hand-writing text-black-50">
                     <span>{{ theMovie.Released }}, </span>
                     <span>{{ theMovie.Runtime }}, </span>
                     <span>{{ theMovie.Country }}</span>
                 </li>
-                <li class="plot fs-5">
+                <li class="plot mb-3 fs-5">
                     {{ theMovie.Plot }}
                 </li>
                 <li class="etc">

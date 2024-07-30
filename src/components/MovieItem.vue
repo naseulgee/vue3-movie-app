@@ -1,8 +1,8 @@
 <template>
-    <li class="rounded overflow-hidden position-relative">
+    <li>
         <RouterLink
             :to="`/movie/${movie.imdbID}`"
-            class="d-block w-100 h-100">
+            class="hover-box d-block position-relative text-decoration-none">
             <Loader
                 v-if="imageLoading"
                 position="absolute" />
@@ -16,12 +16,12 @@
                 :src="movie.Poster"
                 :alt="movie.Title + ' Poster'"
                 class="w-100 h-100" />
-            <div class="info d-flex flex-column justify-content-center align-items-center w-100 h-25 position-absolute bottom-0 start-0 text-white text-center text-wrap">
-                <p class="title w-100 m-0 px-1 overflow-hidden text-nowrap fs-4 lh-1">
-                    {{ movie.Title }}
-                </p>
-                <p class="year m-0 px-1 fs-6 text-white-50">
+            <div class="info hover-box-info w-100 h-25 mt-1 p-1 position-absolute bottom-0 start-0 text-white text-wrap">
+                <p class="year btn-outline-primary m-0 fs-6">
                     {{ movie.Year }}
+                </p>
+                <p class="title w-100 m-0 overflow-hidden text-nowrap fs-4 lh-1">
+                    {{ movie.Title }}
                 </p>
             </div>
         </RouterLink>
@@ -69,22 +69,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-li{
-    background-color: $gray-500;
-    &:hover{
-        border: 5px solid $primary;
+li {
+    a{
+        $width: 200px;
+        width: $width;
+        height: calc($width * 3 / 2);
+        background-color: $gray-500;
         img{
-            transform: scale(1.2);
+            object-fit: cover;
         }
-    }
-    img{
-        object-fit: cover;
-        transition: 0.5s;
-    }
-    .info{
-        backdrop-filter: blur(2px) brightness(0.5);
-        .title{
-            text-overflow: ellipsis;
+        .info{
+            width: $width;
+            background: linear-gradient(
+                    to bottom,
+                    transparent,
+                    transparentize($dark, 0.5));
+            .title{
+                text-overflow: ellipsis;
+            }
         }
     }
 }
