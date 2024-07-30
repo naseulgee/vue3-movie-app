@@ -1,7 +1,8 @@
 <template>
     <Headline />
 
-    <BestMovieCard />
+    <BestMovieCard
+        movie-id="tt4520988" />
 </template>
 
 <script>

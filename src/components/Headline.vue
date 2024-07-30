@@ -41,6 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 @keyframes _ani_arrow_down { 100% { bottom: min(1.5vh, 50px); transform: translate(-50%, 0%); } }
+
 .intro {
     height: $vh-H;
     background: url(~assets/images/main/main-bg.jpg) no-repeat center/cover;
