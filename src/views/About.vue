@@ -4,7 +4,7 @@
             <Loader
                 v-if="imageLoading"
                 position="absolute"
-                size="3" />
+                :size="3" />
             <img
                 :src="image"
                 alt="Profile avata"
@@ -76,6 +76,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@keyframes _ani_floating { 100% { opacity: 1; transform: translateY(0); } }
+
 .container{
     .img-wrap{
         width: 100%;
@@ -83,6 +85,21 @@ export default {
     }
     .info-wrap{
         li{
+            opacity: 0;
+            transform: translateY(50%);
+            animation: _ani_floating 0.5s ease forwards;
+            &:nth-child(1){
+                animation-delay: 0s;
+            }
+            &:nth-child(2){
+                animation-delay: 0.5s;
+            }
+            &:nth-child(3){
+                animation-delay: 1s;
+            }
+            &:nth-child(4){
+                animation-delay: 1.5s;
+            }
             a{
                 color: $body-color;
                 text-decoration: none;
