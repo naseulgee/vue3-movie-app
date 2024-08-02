@@ -1,18 +1,17 @@
 <template>
     <Headline />
 
-    <BestMovieCard
-        movie-id="tt4520988" />
+    <BestMovieList />
 </template>
 
 <script>
 import Headline from '~/components/Headline'
-import BestMovieCard from '~/components/BestMovieCard'
+import BestMovieList from '~/components/BestMovieList'
 
 export default {
     components: {
         Headline,
-        BestMovieCard,
+        BestMovieList,
     },
     created() {
         this.$store.commit('movie/resetMovies') // 검색 내용 초기화

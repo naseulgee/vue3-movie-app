@@ -16,10 +16,11 @@ export default {
     // ★호출(사용): this.$store.state.모듈명.함수명
     state     : () => {
         return {
-            movies  : [],
-            message : _defaultMessage,
-            loading : false,
-            theMovie: {},
+            movies    : [],
+            message   : _defaultMessage,
+            loading   : false,
+            theMovie  : {},
+            bestMovies: [],
         }
     },
     // 계산된 데이터. computed와 유사
@@ -122,6 +123,39 @@ export default {
                 console.log(message)
                 commit('updateState', {
                     theMovie: {},
+                })
+            } finally {
+                commit('updateState', {
+                    loading: false,
+                })
+            }
+        },
+        async setBestMovies({ state, commit }, payload){
+            try {
+                if(state.loading) return
+                if(state.bestMovies.length > 0) return
+                if(payload.ids == null || payload.ids.length == 0) return
+                
+                commit('updateState', {
+                    loading: true,
+                })
+
+                for (let i = 0; i < payload.ids.length; i++) {
+                    const res = await _fetchMovie({
+                        id: payload.ids[i]
+                    })
+                    commit('updateState', {
+                        bestMovies: [
+                            ...state.bestMovies,
+                            res.data,
+                        ]
+                    })
+                    
+                }
+            } catch (message) {
+                console.log(message)
+                commit('updateState', {
+                    bestMovies: [],
                 })
             } finally {
                 commit('updateState', {

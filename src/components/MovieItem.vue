@@ -2,12 +2,12 @@
     <li>
         <RouterLink
             :to="`/movie/${movie.imdbID}`"
-            class="hover-box d-block position-relative text-decoration-none">
+            class="hover-box">
             <Loader
                 v-if="imageLoading"
                 position="absolute" />
             <img
-                v-else-if="noImage"
+                v-if="noImage"
                 src="~/assets/images/common/404-img.jpg"
                 alt="No Poster"
                 class="w-100 h-100" />
@@ -16,8 +16,8 @@
                 :src="movie.Poster"
                 :alt="movie.Title + ' Poster'"
                 class="w-100 h-100" />
-            <div class="info hover-box-info w-100 h-25 mt-1 p-1 position-absolute bottom-0 start-0 text-white text-wrap">
-                <p class="year btn-outline-primary m-0 fs-6">
+            <div class="hover-box-info">
+                <p class="year m-0 fs-6 text-white-50">
                     {{ movie.Year }}
                 </p>
                 <p class="title w-100 m-0 overflow-hidden text-nowrap fs-4 lh-1">
@@ -70,20 +70,12 @@ export default {
 
 <style lang="scss" scoped>
 li {
-    a{
+    .hover-box{
         $width: 200px;
         width: $width;
         height: calc($width * 3 / 2);
         background-color: $gray-500;
-        img{
-            object-fit: cover;
-        }
-        .info{
-            width: $width;
-            background: linear-gradient(
-                    to bottom,
-                    transparent,
-                    transparentize($dark, 0.5));
+        .hover-box-info{
             .title{
                 text-overflow: ellipsis;
             }

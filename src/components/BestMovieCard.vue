@@ -1,43 +1,100 @@
 <template>
-    <section class="container">
-        <h2>TEST</h2>
-        {{ theMovie }}
-    </section>
+    <li class="best-movie h-100 position-relative">
+        <span
+            class="rank d-block position-absolute start-0 text-outline lh-1"
+            :class="{odd: (rank % 2) != 0}">
+            {{ rank }}
+        </span>
+        <RouterLink
+            :to="`/movie/${bestMovie.imdbID}`"
+            class="hover-box w-100 h-100">
+            <Loader
+                v-if="imageLoading"
+                position="absolute"
+                :size="3" />
+            <img
+                :src="reqDiffSizeImage(bestMovie.Poster)"
+                :alt="bestMovie.Title + ' Poster'"
+                class="w-100 h-100" />
+            <div class="hover-box-info">
+                <h3 class="position-relative fs-1">
+                    {{ bestMovie.Title }}
+                    <font-awesome-icon icon="fa-solid fa-circle-plus" />
+                </h3>
+                <p>{{ bestMovie.Awards }}</p>
+                <p>{{ bestMovie.Plot }}</p>
+            </div>
+        </RouterLink>
+    </li>
 </template>
 
 <script>
+import Loader from '~/components/common/Loader'
+
 export default {
     props: {
-        movieId: {
-            type: String,
-            require: true,
+        bestMovie: {
+            type: Object,
+            defualt: () => {}
+        },
+        rank: {
+            type: Number,
+            require: true
         }
     },
     components: {
+        Loader,
     },
     data() {
         return {
-        }
-    },
-    computed: {
-        theMovie() {
-            return this.$store.state.movie.theMovie
+            imageLoading: true,
         }
     },
     methods: {
-    },
-    watch: {
-    },
-    created(){
-        this.$store.dispatch('movie/searchMovieWithId', {
-            id: this.movieId
-        })
+        reqDiffSizeImage(url, size = 700){
+            if(!url) return
+            // 사이즈 변환
+            const src = url.replace('SX300', 'SX' + size)
+
+            try {
+                // 메모리상 이미지가 로딩이 완료될 때 까지 대기
+                this.$loadImage(src)
+            } catch (error) { // 이미지가 없는 경우 예외처리
+                console.error(error)
+            } finally {
+                this.imageLoading = false // 로딩 종료
+            }
+            return src
+        },
     },
 }
 </script>
 
 <style lang="scss" scoped>
-section {
-    height: $vh-H;
+.best-movie{
+    flex-shrink: 0;
+    width: 500px;
+    .rank{
+        font-size: 30rem;
+        transform: translateX(-65%);
+        font-family: 'Pretendard Variable';
+        &.odd{
+            z-index: 2;
+        }
+    }
+    &:nth-child(odd) .rank{
+        top: -0.1em;
+    }
+    &:nth-child(even) .rank{
+        bottom: -0.1em;
+    }
+    .hover-box{
+        .hover-box-info{
+            .fa-circle-plus{
+                top: -0.5rem;
+                font-size: $font-size-lg;
+            }
+        }
+    }
 }
 </style>
