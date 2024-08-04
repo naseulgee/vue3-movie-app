@@ -12,7 +12,7 @@
         </div>
         <ul class="info-wrap p-0 lh-lg text-break">
             <li>
-                <h1 class="text-primary">
+                <h1 class="name text-outline">
                     {{ name }}
                 </h1>
             </li>
@@ -99,6 +99,13 @@ export default {
             }
             &:nth-child(4){
                 animation-delay: 1.5s;
+            }
+            .name{
+                color: transparentize($primary, 0.7);
+                font-size: map-get($display-font-sizes, 1);
+                font-style: italic;
+                text-decoration: underline;
+                -webkit-text-stroke: 1px $primary;
             }
             a{
                 color: $body-color;
