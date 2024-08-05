@@ -51,6 +51,7 @@ export default {
      * payload: 두 번째 매개변수로, actions를 호출 할 때 전달하는 인수를 받는다.
      */
     actions   : {
+        // 영화 목록 검색
         async searchMovies(context, payload) {
             try {
                 // 로딩 상태일 경우 반복 요청 방지
@@ -98,14 +99,16 @@ export default {
                     message: '',
                     loading: false,
                 })
-            } catch(message) {
+            } catch (error) {
+                console.log(error)
                 context.commit('updateState', {
-                    message,
+                    message: error.response.data,
                     movies: [],
                     loading: false,
                 })
             }
         },
+        // 영화 상세 정보
         async searchMovieWithId({ state, commit }, payload){
             try {
                 if(state.loading) return
@@ -119,8 +122,8 @@ export default {
                 commit('updateState', {
                     theMovie: res.data
                 })
-            } catch (message) {
-                console.log(message)
+            } catch (error) {
+                console.log(error)
                 commit('updateState', {
                     theMovie: {},
                 })
@@ -130,6 +133,7 @@ export default {
                 })
             }
         },
+        // Best 영화 목록
         async setBestMovies({ state, commit }, payload){
             try {
                 if(state.loading) return
@@ -152,8 +156,8 @@ export default {
                     })
                     
                 }
-            } catch (message) {
-                console.log(message)
+            } catch (error) {
+                console.log(error)
                 commit('updateState', {
                     bestMovies: [],
                 })
@@ -166,21 +170,26 @@ export default {
     },
 }
 
-function _fetchMovie(payload) { // 내부에서만 사용한다는 의미로 함수명 앞에 언더바(_) 추가
-    // [참고] https://www.omdbapi.com/
-    const { title, type, year, page, id } = payload
-    const OMDB_API_KEY = '8a44dd72'
-    const url = id
-        ? `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}`
-        : `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title}&type=${type}&y=${year}&page=${page}`
-
-    return new Promise((resolve, reject) => {
-        axios.get(url)
-            .then(res => {
-                // 상태코드 200 이나, 에러인 경우 처리
-                if(res.data.Error) reject(res.data.Error)
-                resolve(res)
-            })
-            .catch(err => reject(err.message))
-    })
+// 내부에서만 사용한다는 의미로 함수명 앞에 언더바(_) 추가
+async function _fetchMovie(payload) {
+    // API KEY 를 포함하여 요청하는 로직은 서버리스 함수로 이동
+    return await axios.post('/.netlify/functions/movie', payload)
 }
+// function _fetchMovie(payload) {
+//     // [참고] https://www.omdbapi.com/
+//     const { title, type, year, page, id } = payload
+//     const OMDB_API_KEY = '8a44dd72'
+//     const url = id
+//         ? `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}`
+//         : `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title}&type=${type}&y=${year}&page=${page}`
+
+//     return new Promise((resolve, reject) => {
+//         axios.get(url)
+//             .then(res => {
+//                 // 상태코드 200 이나, 에러인 경우 처리
+//                 if(res.data.Error) reject(res.data.Error)
+//                 resolve(res)
+//             })
+//             .catch(err => reject(err.message))
+//     })
+// }
