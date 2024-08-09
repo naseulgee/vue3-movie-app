@@ -22,7 +22,8 @@
             class="info-wrap d-flex flex-wrap justify-content-between">
             <div
                 class="poster mx-auto rounded-3 position-relative"
-                :style="{background: `var(--bs-gray-200) url(${!noImage ? reqDiffSizeImage(theMovie.Poster) : require('~/assets/images/common/404-img.jpg')}) no-repeat center/cover`}">
+                :class="{'noImage': noImage}"
+                :style="{backgroundImage: `url(${reqDiffSizeImage(theMovie.Poster)})`}">
                 <Loader
                     v-if="imageLoading"
                     position="absolute"
@@ -128,6 +129,11 @@ export default {
             'searchMovieWithId',
         ]),
         reqDiffSizeImage(url, size = 700){
+            if(!url || url == 'N/A') { // url 이 없으면 404 이미지
+                this.imageLoading = false
+                this.noImage = true
+                return ''
+            }
             // 사이즈 변환
             let src = url.replace('SX300', 'SX' + size)
 
@@ -169,6 +175,10 @@ export default {
             flex-shrink: 0;
             width: $posterW;
             height: calc($posterW * 3 / 2);
+            background: var(--bs-gray-200) no-repeat center/cover;
+            &.noImage{
+                background-image: url('~assets/images/common/404-img.jpg') !important;
+            }
         }
         .specs{
             flex-grow: 1;

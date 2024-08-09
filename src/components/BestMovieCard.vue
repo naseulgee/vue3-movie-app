@@ -13,6 +13,12 @@
                 position="absolute"
                 :size="3" />
             <img
+                v-if="noImage"
+                src="~/assets/images/common/404-img.jpg"
+                alt="No Poster"
+                class="w-100 h-100" />
+            <img
+                v-else
                 :src="reqDiffSizeImage(bestMovie.Poster)"
                 :alt="bestMovie.Title + ' Poster'"
                 class="w-100 h-100" />
@@ -48,11 +54,16 @@ export default {
     data() {
         return {
             imageLoading: true,
+            noImage: false,
         }
     },
     methods: {
         reqDiffSizeImage(url, size = 700){
-            if(!url) return
+            if(!url || url == 'N/A') { // url 이 없으면 404 이미지
+                this.imageLoading = false
+                this.noImage = true
+                return ''
+            }
             // 사이즈 변환
             const src = url.replace('SX300', 'SX' + size)
 
@@ -61,6 +72,7 @@ export default {
                 this.$loadImage(src)
             } catch (error) { // 이미지가 없는 경우 예외처리
                 console.error(error)
+                this.noImage = true
             } finally {
                 this.imageLoading = false // 로딩 종료
             }
