@@ -27,8 +27,12 @@
                     {{ bestMovie.Title }}
                     <font-awesome-icon icon="fa-solid fa-circle-plus" />
                 </h3>
-                <p>{{ bestMovie.Awards }}</p>
-                <p>{{ bestMovie.Plot }}</p>
+                <p class="w-auto text-primary fst-italic text-decoration-underline">
+                    {{ bestMovie.Awards }}
+                </p>
+                <p class="ellipsis-2">
+                    {{ bestMovie.Plot }}
+                </p>
             </div>
         </RouterLink>
     </li>
@@ -84,8 +88,6 @@ export default {
 
 <style lang="scss" scoped>
 .best-movie{
-    flex-shrink: 0;
-    width: 500px;
     .rank{
         font-size: 30rem;
         transform: translateX(-65%);

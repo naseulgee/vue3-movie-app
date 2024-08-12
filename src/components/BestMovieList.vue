@@ -102,12 +102,18 @@ export default {
             transition: 1s ease-in-out;
         }
         .best-movie-list{
+            $list-H: calc($vh-H - $bestHFontS - $spacer);
             gap: 400px;
-            height: calc($vh-H - $bestHFontS - $spacer);
+            height: $list-H;
             top: calc($bestHFontS + $spacer);
             left: 100vw;
-            li:last-child{
-                margin-right: $spacer;
+            li{
+                flex-shrink: 0;
+                width: calc($list-H / 3 * 2);
+                height: $list-H;
+                &:last-child{
+                    margin-right: $spacer;
+                }
             }
         }
     }

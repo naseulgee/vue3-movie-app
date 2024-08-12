@@ -50,6 +50,22 @@ $vh-HF  : calc(100vh - $headerH - $footerH);
     font-style: normal;
     -webkit-text-stroke: 1px $white;
 }
+[class^="ellipsis"]{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    &.ellipsis-1{
+        -webkit-line-clamp: 1;
+    }
+    &.ellipsis-2{
+        -webkit-line-clamp: 2;
+    }
+    &.ellipsis-3{
+        -webkit-line-clamp: 3;
+    }
+}
 /* e: 폰트 */
 /* s: 호버 박스 */
 .hover-box{
@@ -60,7 +76,7 @@ $vh-HF  : calc(100vh - $headerH - $footerH);
     text-decoration: none;
     transition: $transition-base;
     z-index: 1;
-    &::before{
+    &::before{ /* + MORE 버튼 */
         content: '+\AMORE';
         display: flex;
         justify-content: center;
@@ -81,11 +97,11 @@ $vh-HF  : calc(100vh - $headerH - $footerH);
         position: absolute;
         left: 50%;
         bottom: 40%;
-        z-index: 2;
+        z-index: 3;
         transform: translate(-50%, 50%);
         transition: $transition-base;
     }
-    &::after{
+    &::after{ /* 배경 어둡게 */
         content: '';
         display: block;
         width: 100%;
@@ -121,10 +137,10 @@ $vh-HF  : calc(100vh - $headerH - $footerH);
         bottom: 0;
         left: 0;
         text-wrap: wrap;
-        z-index: 3;
+        z-index: 2;
         color: $white;
         word-break: break-word;
-        > *{
+        > *:not([class^="ellipsis"]){
             display: block;
             width: 100%;
         }
@@ -152,6 +168,9 @@ $vh-HF  : calc(100vh - $headerH - $footerH);
             .fa-circle-plus{
                 opacity: 0;
                 transform: translateY(100%);
+            }
+            [class^="ellipsis"]{
+                display: block;
             }
         }
     }

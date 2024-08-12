@@ -1,6 +1,8 @@
 <template>
     <section class="container">
-        <ul class="d-flex flex-wrap justify-content-center align-items-center w-100 my-1 p-1 rounded">
+        <ul
+            class="d-flex flex-wrap justify-content-center align-items-center w-100 my-1 p-1 rounded"
+            :class="{empty: movies.length == 0}">
             <Loader
                 v-if="loading"
                 position="absolute"
@@ -45,6 +47,10 @@ export default {
         gap: 10px;
         min-height: calc($vh-HF - 75.5px);
         background-color: $gray-200;
+        align-content: flex-start;
+        &.empty{
+            align-content: center;
+        }
         li.message{
             color: $gray-500;
         }
