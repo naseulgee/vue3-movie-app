@@ -100,7 +100,7 @@ export default {
                     loading: false,
                 })
             } catch (error) {
-                console.log(error)
+                console.log('ERROR!!!!!!!!!!!!!!', error)
                 context.commit('updateState', {
                     message: error.response.data,
                     movies: [],
