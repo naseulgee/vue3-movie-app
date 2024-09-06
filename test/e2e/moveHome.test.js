@@ -7,7 +7,7 @@
  * 영화 상세 페이지로 이동한다
  * Header 로고를 클릭한다
  * 다시 메인 페이지에서 내용을 확인한다
- */
+*/
 
 describe('메인 페이지 이동', { testIsolation: false }, () => {
     const { baseUrl } = Cypress.config()
